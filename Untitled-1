@@ -1,0 +1,55 @@
+{
+  "products":[
+    {
+      "id":0,
+      "title": "iphone xs",
+      "category": ""
+    }
+  ],
+  "orders":[
+
+  ],
+  "categories":[
+    {
+      "id": 0,
+      "title": "Hello",
+      "children": [1,2,3]
+    },
+    {
+      "id":1,
+      "title": "asdfasdf"
+    },
+    {
+      "id":2,
+      "title": "adsfasdf",
+      "children":[4]
+    },
+
+
+    {
+      "id": "0",
+      "title": "Hello",
+      "children": [
+        {
+          "id": "0-0",
+          "title": "asdfasdf"
+        },{
+          "id": "0-1",
+          "title": "adsfasdf",
+          "children": [
+            {
+              "id": "0-1-0",
+              "title": "asdfasdf"
+            },
+            {
+              "id": "0-1-1",
+              "title": "adsfasdf"
+            }
+          ]
+        }
+      ]
+    }
+
+
+  ]
+}
