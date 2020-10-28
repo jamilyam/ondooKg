@@ -1,14 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import Link from '@material-ui/core/Link';
+import React from "react";
+import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   mainFeaturedPost: {
-    marginTop: "20px",
+    marginTop: "40px",
     position: "relative",
     backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
@@ -18,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
-    maxHeight: "200px",
+    maxHeight: "190px",
   },
   overlay: {
     position: "absolute",
@@ -29,17 +30,31 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "rgba(0,0,0,.3)",
   },
   mainFeaturedPostContent: {
+    textAlign: "center",
     position: "relative",
     padding: theme.spacing(3),
     [theme.breakpoints.up("md")]: {
       padding: theme.spacing(6),
       paddingRight: 0,
     },
+    backgroundColor: "white",
+    color: "black",
+    width: "50%",
+    // height: "90%",
+    top: 0,
+    left: "70%",
+    // margin: "auto",
+    // padding:"0 20px",
+    alignItems: "center",
+  },
+  viewButton: {
+    transition: "200ms",
   },
 }));
 
 export default function SaleBanner() {
   const classes = useStyles();
+  const history = useHistory();
   const post = {
     title: "Специальные цены октября",
     description:
@@ -51,22 +66,37 @@ export default function SaleBanner() {
   };
 
   return (
-    <Paper className={classes.mainFeaturedPost} style={{ backgroundImage: `url(${post.image})` }}>
-      {/* Increase the priority of the hero background image */}
-      {<img style={{ display: 'none' }} src={post.image} alt={post.imageText} />}
+    <Paper
+      className={classes.mainFeaturedPost}
+      style={{ backgroundImage: `url(${post.image})` }}
+    >
+      {
+        <img
+          style={{ display: "none" }}
+          src={post.image}
+          alt={post.imageText}
+        />
+      }
       <div className={classes.overlay} />
       <Grid container>
         <Grid item md={6}>
           <div className={classes.mainFeaturedPostContent}>
-            <Typography component="h1" variant="h3" color="inherit" gutterBottom>
+            <Typography
+              component="h5"
+              variant="h5"
+              color="inherit"
+              gutterBottom
+            >
               {post.title}
             </Typography>
-            <Typography variant="h5" color="inherit" paragraph>
-              {post.description}
-            </Typography>
-            <Link variant="subtitle1" href="#">
+            <Button
+              className={classes.viewButton}
+              variant="contained"
+              color="secondary"
+              onClick={() => history.replace("/auth/register")}
+            >
               {post.linkText}
-            </Link>
+            </Button>
           </div>
         </Grid>
       </Grid>

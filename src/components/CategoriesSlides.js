@@ -42,6 +42,35 @@ const images = [
       "https://res.cloudinary.com/lmru/image/upload/f_auto,q_auto,h_240,c_pad,b_white,d_photoiscoming.png/LMCode/82410472_i.jpg",
     link: "/auth/register",
   },
+  {
+    name: "Краски",
+    description:
+      "Специальное предложение на сноуборд СНОУБОРД BURTON CLASH за 8000 сом",
+    image:
+      "https://res.cloudinary.com/lmru/image/upload/f_auto,q_auto,h_160,c_pad,b_white,d_photoiscoming.png/LMCode/11467386.jpg",
+    link: "/catalog?category=suhie",
+  },
+  {
+    name: "Электроинструменты",
+    description: "СНОУБОРД BLACK FIRE FIRE за 14000 сом",
+    image:
+      "https://res.cloudinary.com/lmru/image/upload/f_auto,q_auto,h_240,c_pad,b_white,d_photoiscoming.png/LMCode/18769951.jpg",
+    link: "/catalog?category=udlinit",
+  },
+  {
+    name: "Плитка",
+    description: "Акция на все модели СНОУБОРДОВ BURTON скидка 20%",
+    image:
+      "https://res.cloudinary.com/lmru/image/upload/f_auto,q_auto,h_240,c_pad,b_white,d_photoiscoming.png/LMCode/82506199.jpg",
+    link: "/catalog?category=oblic",
+  },
+  {
+    name: "Обои",
+    description: "Хит продаж СНОУБОРД BURTON CLASH за 14000 сом",
+    image:
+      "https://res.cloudinary.com/lmru/image/upload/f_auto,q_auto,h_240,c_pad,b_white,d_photoiscoming.png/LMCode/82410472_i.jpg",
+    link: "/auth/register",
+  },
 ];
 export default class CategoriesSlides extends Component {
   render() {

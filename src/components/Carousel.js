@@ -25,30 +25,31 @@ const useStyles = makeStyles((theme) => ({
     textOverflow: "ellipsis",
     position: "absolute",
     // bottom: 20,
-    top:5,
-    right:0,
+    top: 15,
+    right: 0,
     padding: "25px",
     backgroundColor: "white",
     color: "black",
     // opacity: 0.9,
-    width: "30%",
-    height: "70%",
+    width: "35%",
+    height: "87%",
     textTransform: "capitalize",
-    fontSize: "40px",
+    fontSize: "18px",
+    boxSizing: "border-box",
   },
   viewButton: {
     color: "black",
-    border: "3px solid white",
+    // border: "3px solid white",
     // textTransform: "capitalize",
     transition: "200ms",
+    marginTop: "40px",
   },
 }));
 export default function SlideShow(props) {
   var items = [
     {
       name: "Распродажа",
-      description:
-        "Уют начинается здесь. Декор для дома по низким ценам",
+      description: "Уют начинается здесь. Декор для дома по низким ценам",
       image:
         "https://res.cloudinary.com/lmru-test/image/upload/f_auto,q_auto,c_pad,b_white,d_photoiscoming.png/elbrus/images/banners2020/uyut-nachinaetsya-s-leroy-merlin_d.jpg",
     },
@@ -94,11 +95,10 @@ function Item(props) {
         >
           <Typography size="large" className={classes.mediaCaption}>
             {props.item.description}
-            <br/>
             <Button
               className={classes.viewButton}
-              variant="outlined"
-              color="primary"
+              variant="contained"
+              color="secondary"
               onClick={() => history.replace("/auth/register")}
             >
               Подробнее

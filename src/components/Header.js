@@ -208,9 +208,9 @@ export default function Header() {
   );
 
   return (
-    <Container maxWidth="lg">
-      <div className={classes.grow}>
-        <AppBar position="static" className={classes.appbar}>
+    <div className={classes.grow}>
+      <AppBar position="static" className={classes.appbar}>
+        <Container maxWidth="lg">
           <Toolbar>
             <IconButton
               edge="start"
@@ -314,10 +314,10 @@ export default function Header() {
               </IconButton>
             </div>
           </Toolbar>
-        </AppBar>
-        {renderMobileMenu}
-        {renderMenu}
-      </div>
-    </Container>
+        </Container>
+      </AppBar>
+      {renderMobileMenu}
+      {renderMenu}
+    </div>
   );
 }
