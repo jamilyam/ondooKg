@@ -11,6 +11,7 @@ import {
   subQuantity,
 } from "../../redux/products/actions";
 
+
 export default function CartItem({ item, count }) {
   const dispatch = useDispatch();
   const handleRemoveFromCart = () => {
@@ -32,16 +33,16 @@ export default function CartItem({ item, count }) {
       <TableCell component="th" scope="row">
         {item.title}
       </TableCell>
-      <TableCell align="right">{item.price}</TableCell>
-      <TableCell align="right">{item.salePrice}</TableCell>
-      <TableCell align="right">
+      <TableCell>{item.price}</TableCell>
+      <TableCell>{item.salePrice}</TableCell>
+      <TableCell>
         <button
           className="material-icons"
           onClick={() => handleAddQuantity(item.id)}
         >
           arrow_drop_up
         </button>
-        {item.count || 1}
+        <span className="count">{item.count || 1}</span>
         <button
           className="material-icons"
           onClick={() => handleSubtractQuantity(item.id)}

@@ -41,6 +41,7 @@ export default function EditProduct() {
   const [data, setData] = useState(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [characteristics, setcharacteristics] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
   const [image, setImage] = useState("");
@@ -58,6 +59,7 @@ export default function EditProduct() {
         setData(response.data);
         setTitle(response.data.title);
         setDescription(response.data.description);
+        setcharacteristics(response.data.characteristics);
         setPrice(response.data.price);
         setSalePrice(response.data.salePrice);
         setCategory(response.data.category);
@@ -82,6 +84,7 @@ export default function EditProduct() {
         ...data,
         title,
         description,
+        characteristics,
         price,
         salePrice,
         category,
@@ -119,7 +122,16 @@ export default function EditProduct() {
           value={description}
         />
       </FormGroup>
-
+      <FormGroup>
+        <TextField
+          label="Характеристика"
+          className={classes.inp}
+          type="text"
+          name="characteristics"
+          onChange={(e) => setcharacteristics(e.target.value)}
+          value={characteristics}
+        />
+      </FormGroup>
       <FormGroup>
         <TextField
           label="Цена"

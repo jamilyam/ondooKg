@@ -3,6 +3,7 @@ import { Grid } from "@material-ui/core";
 import ProductCard from "./ProductCard";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchData } from "../redux/products/actions";
+// import { useLocation } from "react-router-dom";
 import { Pagination, PaginationItem } from "@material-ui/lab";
 import { Link, useLocation } from "react-router-dom";
 
@@ -15,8 +16,8 @@ export default function CategoryPage() {
 
   const location = useLocation();
 
-  // const query = new URLSearchParams(location.search);
-  // const page = query.get("_page") || 1;
+  const query = new URLSearchParams(location.search);
+  const page = query.get("_page") || 1;
 
   useEffect(() => {
     dispatch(fetchData());
@@ -38,19 +39,19 @@ export default function CategoryPage() {
           </Grid>
         ))}
       </Grid>
-      {/* <Grid>
+      <Grid>
         <Pagination
           count={Math.ceil(totalCount / 3)}
           page={parseInt(page)}
           renderItem={(item) => (
             <PaginationItem
               component={Link}
-              to={`/?_page=${item.page}`}
+              to={`/catalog/?_page=${item.page}`}
               {...item}
             />
           )}
         />
-      </Grid> */}
+      </Grid>
     </>
   );
 }

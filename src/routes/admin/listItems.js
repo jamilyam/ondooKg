@@ -8,11 +8,19 @@ import AssignmentIcon from "@material-ui/icons/Assignment";
 import BarChartIcon from '@material-ui/icons/BarChart';
 import LayersIcon from '@material-ui/icons/Layers';
 import { useHistory} from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { signout } from "../../redux/firebaseAuth/actions/auth";
 
 
 export default function MainListItems(){ 
   
   const history = useHistory();
+
+  const dispatch = useDispatch();
+  const logout = () => {
+    dispatch(signout());
+  };
 
   return (
     <div>
@@ -45,6 +53,11 @@ export default function MainListItems(){
           <AssignmentIcon />
         </ListItemIcon>
         <ListItemText primary="Редактировать товар" />
+      </ListItem>
+      <ListItem button onClick={logout}>
+        <ListItemIcon>
+          <ExitToAppIcon />
+        </ListItemIcon>
       </ListItem>
     </div>
   );

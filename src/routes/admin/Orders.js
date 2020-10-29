@@ -25,13 +25,13 @@ class Orders extends Component {
         <Table size="small">
           <TableHead>
             <TableRow>
-              <TableCell>Order</TableCell>
-              <TableCell align="right">Id:</TableCell>
-              <TableCell align="right">Name:</TableCell>
+              <TableCell align="right">Номер заказа:</TableCell>
+              <TableCell align="right">Имя:</TableCell>
               <TableCell align="right">Email:</TableCell>
-              <TableCell align="right">Address:</TableCell>
-              <TableCell align="right">Total:</TableCell>
-              <TableCell align="right">Cart Items:</TableCell>
+              <TableCell align="right">Адрес:</TableCell>
+              <TableCell align="right">Номер телефона:</TableCell>
+              <TableCell align="right">Сумма:</TableCell>
+              <TableCell align="right">Товары:</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

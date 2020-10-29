@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, makeStyles, Grid } from "@material-ui/core";
-import Cart from "../components/cart/Cart";
+import ProductList from "../components/ProductList";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -8,12 +8,12 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function ShoppingCart() {
+export default function Products() {
   const classes = useStyles();
   return (
-    <Container className={classes.root} maxWidth="lg">
+    <Container className={classes.root} maxWidth="md">
       <Grid>
-        <Cart />
+        <ProductList />
       </Grid>
     </Container>
   );

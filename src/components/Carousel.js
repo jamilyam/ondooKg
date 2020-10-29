@@ -99,7 +99,7 @@ function Item(props) {
               className={classes.viewButton}
               variant="contained"
               color="secondary"
-              onClick={() => history.replace("/auth/register")}
+              onClick={() => history.replace("/products")}
             >
               Подробнее
             </Button>

@@ -123,7 +123,7 @@ export const fetchOrders = () => (dispatch) => {
 };
 
 
-//add qt action
+//add quantity action
 
  export const addQuantity = (id)=> (dispatch, getState) => {
    const cart = [...getState().products.cart];
@@ -147,43 +147,4 @@ export const fetchOrders = () => (dispatch) => {
     });
   };
 
-  //  if (action.type === SUB_QUANTITY) {
-  //    let addedItem = state.items.find((item) => item.id === action.id);
-  //    //if the qt == 0 then it should be removed
-  //    if (addedItem.quantity === 1) {
-  //      let new_items = state.addedItems.filter((item) => item.id !== action.id);
-  //      let newTotal = state.total - addedItem.price;
-  //      return {
-  //        ...state,
-  //        addedItems: new_items,
-  //        total: newTotal,
-  //      };
-  //    } else {
-  //      addedItem.quantity -= 1;
-  //      let newTotal = state.total - addedItem.price;
-  //      return {
-  //        ...state,
-  //        total: newTotal,
-  //      };
-  //    }
-  //  }
-
-// let addedItem = state.items.find(item=> item.id === action.id) 
-//         //if the qt == 0 then it should be removed
-//         if(addedItem.quantity === 1){
-//             let new_items = state.addedItems.filter(item=>item.id !== action.id)
-//             let newTotal = state.total - addedItem.price
-//             return{
-//                 ...state,
-//                 addedItems: new_items,
-//                 total: newTotal
-//             }
-
-// else {
-//             addedItem.quantity -= 1
-//             let newTotal = state.total - addedItem.price
-//             return{
-//                 ...state,
-//                 total: newTotal
-//             }
-//         }
+  

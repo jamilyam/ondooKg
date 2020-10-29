@@ -8,9 +8,10 @@ import {
   Grid,
   Button,
   FormControlLabel,
-  TextareaAutosize,
+  Textarea,
   Input,
   InputLabel,
+  TextField,
 } from "@material-ui/core";
 
 
@@ -18,6 +19,7 @@ class ProductAddForm extends Component {
   state = {
     title: "",
     description: "",
+    characteristics:"",
     price: "",
     onSale: true,
     discountInPercent: "",
@@ -30,12 +32,14 @@ class ProductAddForm extends Component {
     gender: "",
     inventory: "",
     count:1,
+    rating:0,
   };
   handleSubmitOn = (e) => {
     const product = {
       id: Date.now(),
       title: this.state.title,
       description: this.state.description,
+      characteristics: this.state.characteristics,
       price: this.state.price,
       onSale: this.state.onSale,
       discountInPercent: this.state.discountInPercent,
@@ -49,12 +53,14 @@ class ProductAddForm extends Component {
       inventory: this.state.inventory,
       createdAt: new Date().toJSON(),
       updatedAt: new Date().toJSON(),
+      rating: this.state.rating,
     };
     this.props.addProduct(product);
     this.setState({
       id: "",
       title: "",
       description: "",
+      characteristics: "",
       price: "",
       onSale: true,
       discountInPercent: "",
@@ -66,6 +72,7 @@ class ProductAddForm extends Component {
       brand: "",
       gender: "",
       inventory: "",
+      rating: 0,
     });
   };
 
@@ -124,13 +131,29 @@ class ProductAddForm extends Component {
                     <InputLabel htmlFor="component-simple">
                       Описание товара
                     </InputLabel>
-                    <TextareaAutosize
+                    <TextField
                       rowsMax={5}
                       name="description"
                       id="component-simple"
                       onChange={this.handleInput}
                       value={this.state.description}
                       aria-describedby="component-simple"
+                      multiline="true"
+                      
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <InputLabel htmlFor="component-simple">
+                      Характеристика товара
+                    </InputLabel>
+                    <TextField
+                      rowsMax={5}
+                      name="characteristics"
+                      id="component-simple"
+                      onChange={this.handleInput}
+                      value={this.state.characteristics}
+                      aria-describedby="component-simple"
+                      size="medium"
                     />
                   </Grid>
                   <Grid item xs={12}>

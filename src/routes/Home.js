@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, makeStyles } from "@material-ui/core";
-import ProductList from "../components/ProductList";
+// import ProductList from "../components/ProductList";
 import SlideShow from "../components/Carousel";
 import CategoriesSlides from "../components/CategoriesSlides";
 import SaleBanner from "../components/SaleBanner";

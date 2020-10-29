@@ -5,17 +5,52 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import TreeItem from "@material-ui/lab/TreeItem";
 import { useHistory, useLocation } from "react-router-dom";
-import ProductList from "../components/ProductList";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import { List } from "@material-ui/core";
 import CategoryPage from "../components/CategoryPage";
+import Drawer from "@material-ui/core/Drawer";
+import clsx from "clsx";
 
+const drawerWidth = 340;
 const useStyles = makeStyles((theme) => ({
-  root: {
+  rootCategory: {
     height: 400,
     flexGrow: 1,
     maxWidth: 400,
+    padding: theme.spacing(2),
+  },
+  category: {
+    paddingTop: theme.spacing(2),
+  },
+  root: {
+    display: "flex",
+  },
+  appBarSpacer: theme.mixins.toolbar,
+  content: {
+    // flexGrow: 1,
+    height: "100vh",
+    overflow: "auto",
+    paddingTop: theme.spacing(2),
+  },
+  container: {
+    // paddingTop: theme.spacing(4),
+    // paddingBottom: theme.spacing(4),
+  },
+  paper: {
+    // padding: theme.spacing(2),
+    display: "flex",
+    overflow: "auto",
+    flexDirection: "column",
+  },
+  drawerPaper: {
+    position: "relative",
+    whiteSpace: "nowrap",
+    width: drawerWidth,
+    transition: theme.transitions.create("width", {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
   },
 }));
 
@@ -32,7 +67,7 @@ export default function Catalog() {
 
   const Categories = () => (
     <TreeView
-      className={classes.root}
+      className={classes.rootCategory}
       defaultCollapseIcon={<ExpandMoreIcon />}
       defaultExpandIcon={<ChevronRightIcon />}
       multiSelect
@@ -77,9 +112,7 @@ export default function Catalog() {
           nodeId="6"
           label="Электроустановочные изделия"
           button
-          onClick={() =>
-            handleChangeFilter("?category=izdeliya")
-          }
+          onClick={() => handleChangeFilter("?category=izdeliya")}
           selected={search.get("category") === "izdeliya"}
         />
         <TreeItem
@@ -127,17 +160,25 @@ export default function Catalog() {
   );
 
   return (
-    <div>
-
-        <List>
-          <Categories/>
+    <div className={classes.root}>
+      <Drawer
+        variant="permanent"
+        classes={{
+          paper: clsx(classes.drawerPaper),
+        }}
+      >
+        <List className={classes.category}>
+          <Categories />
         </List>
-
-      <Container maxWidth="lg" className={classes.container}>
-        <Grid container spacing={3}>
-          <CategoryPage />
-        </Grid>
-      </Container>
+      </Drawer>
+      <main className={classes.content}>
+        {/* <div className={classes.appBarSpacer} /> */}
+        <Container maxWidth="lg" className={classes.container}>
+          <Grid>
+            <CategoryPage />
+          </Grid>
+        </Container>
+      </main>
     </div>
   );
 }

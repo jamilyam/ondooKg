@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart} from "../redux/products/actions";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import Rating from "@material-ui/lab/Rating";
+import { sizing } from "@material-ui/system";
 
 const useStyles = makeStyles((theme) => ({
   media: {
@@ -37,6 +38,9 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     margin: "10px",
+    display: 'block',
+    transitionDuration: "0.3s",
+    height:"30vw",
   },
   saleIndicator: {
     position: "absolute",
@@ -67,8 +71,8 @@ export default function ProductCard({ data }) {
   const [value, setValue] = React.useState(2);
 
   return (
-    <Card className={classes.card}>
-      <CardMedia className={classes.media}>
+    <Card height="100%" className={classes.card}>
+      <CardMedia height="50%" className={classes.media}>
         <img
           className={classes.mediaImage}
           src={data.image || emptyImage}
@@ -79,20 +83,20 @@ export default function ProductCard({ data }) {
         />
         {data.discountInPercent != null && (
           <Button
-            size="medium"
+            size="small"
             className={classes.saleIndicator}
-            color="secondary"
+            color="primary"
             variant="contained"
           >
             -{data.discountInPercent}
           </Button>
         )}
       </CardMedia>
-      <CardContent>
+      <CardContent height="35%">
         <Typography variant="body2" color="textSecondary" component="p">
           Арт.{data.id}
         </Typography>
-        <Typography gutterBottom variant="h5" component="h2">
+        <Typography gutterBottom variant="h6" component="h6">
           {data.title}
         </Typography>
         <Box component="fieldset" mb={3} borderColor="transparent">
@@ -108,10 +112,9 @@ export default function ProductCard({ data }) {
       <CardActions className={classes.CardActions} disableSpacing>
         <div>
           {isInCart ? (
-            <IconButton
-              style={{ color: "orange" }}
-              aria-label="add to card"
-            ><ShoppingCartIcon /></IconButton>
+            <IconButton style={{ color: "orange" }} aria-label="add to card">
+              <ShoppingCartIcon />
+            </IconButton>
           ) : (
             <IconButton
               onClick={handleAddToCart}
@@ -130,7 +133,6 @@ export default function ProductCard({ data }) {
               {"сом/шт"}
             </Button>
           )}
-
           <Button size="large" color="primary">
             {data.salePrice ?? data.price}
           </Button>

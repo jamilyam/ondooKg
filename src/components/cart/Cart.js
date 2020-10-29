@@ -23,6 +23,7 @@ class Cart extends Component {
       name: "",
       email: "",
       address: "",
+      number:"",
       showCheckout: false,
     };
   }
@@ -36,6 +37,7 @@ class Cart extends Component {
       name: this.state.name,
       email: this.state.email,
       address: this.state.address,
+      number: this.state.number,
       createdAt: new Date().toLocaleString(),
       total: this.props.cartItems.reduce((a, c) => a + c.price * c.count, 0),
       cartItems: this.props.cartItems,
@@ -65,12 +67,11 @@ class Cart extends Component {
                 x
               </button>
               <div className="order-details">
-                <h3 className="success-message">Your order has been placed.</h3>
-                <h2>Order {order.id}</h2>
+                <h3 className="success-message">Ваш заказ был успешно оформлен.</h3>
+                <h2>Номер заказа {order.id}</h2>
                 <ul>
-                  {/* <OrderItem order={order} /> */}
                   <li>
-                    <div>Name:</div>
+                    <div>Имя:</div>
                     <div>{order.name}</div>
                   </li>
                   <li>
@@ -78,19 +79,23 @@ class Cart extends Component {
                     <div>{order.email}</div>
                   </li>
                   <li>
-                    <div>Address:</div>
+                    <div>Адрес:</div>
                     <div>{order.address}</div>
                   </li>
                   <li>
-                    <div>Date:</div>
+                    <div>Номер телефона:</div>
+                    <div>{order.number}</div>
+                  </li>
+                  <li>
+                    <div>Время заказа:</div>
                     <div>{order.createdAt}</div>
                   </li>
                   <li>
-                    <div>Total:</div>
+                    <div>Сумма итого:</div>
                     <div>{order.total}</div>
                   </li>
                   <li>
-                    <div>Cart Items:</div>
+                    <div>Товары:</div>
                     <div>
                       {order.cartItems.map((x) => (
                         <div>
@@ -122,7 +127,7 @@ class Cart extends Component {
                 {/* <Fade left cascade> */}
                 <TableBody className="cart-items">
                   {cartItems.map((item) => (
-                    <CartItem key={item.id} item={item} count={count}/>
+                    <CartItem key={item.id} item={item} count={count} />
                   ))}
                   <TableRow>
                     <TableCell component="th" scope="row">
@@ -153,7 +158,7 @@ class Cart extends Component {
                     }}
                     color="primary"
                     size="medium"
-                    variant="outlined"
+                    variant="contained"
                   >
                     Заказать
                   </Button>
@@ -192,9 +197,23 @@ class Cart extends Component {
                           ></input>
                         </li>
                         <li>
-                          <button className="button primary" type="submit">
-                            Оформить заказа
-                          </button>
+                          <label>Номер телефона</label>
+                          <input
+                            name="number"
+                            type="text"
+                            required
+                            onChange={this.handleInput}
+                          ></input>
+                        </li>
+                        <li>
+                          <Button
+                            type="submit"
+                            color="primary"
+                            size="medium"
+                            variant="contained"
+                          >
+                            Оформить заказ
+                          </Button>
                         </li>
                       </ul>
                     </form>

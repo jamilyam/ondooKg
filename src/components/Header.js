@@ -15,8 +15,10 @@ import MoreIcon from "@material-ui/icons/MoreVert";
 import { Divider, Container } from "@material-ui/core";
 import { useHistory, useLocation } from "react-router-dom";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import BallotIcon from "@material-ui/icons/Ballot";
+import { signout } from "../redux/firebaseAuth/actions/auth";
+
 
 const useStyles = makeStyles((theme) => ({
   appbar:{
@@ -40,9 +42,9 @@ const useStyles = makeStyles((theme) => ({
   search: {
     position: "relative",
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
+    backgroundColor: fade(theme.palette.secondary.main, 0.15),
     "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+      backgroundColor: fade(theme.palette.secondary.main, 0.25),
     },
     marginRight: theme.spacing(2),
     marginLeft: theme.spacing(2),
@@ -97,9 +99,11 @@ export default function Header() {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const history = useHistory();
+
+  //Logout
+  const dispatch = useDispatch();
   const logout = () => {
-    localStorage.removeItem("user");
-    history.replace("/auth/login");
+    dispatch(signout());
   };
 
   //search
@@ -154,7 +158,7 @@ export default function Header() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={() => history.replace("/auth/register")}>
+      <MenuItem onClick={() => history.replace("/auth/login")}>
         Профиль
       </MenuItem>
       <MenuItem onClick={() => history.replace("/admin")}>
@@ -223,8 +227,9 @@ export default function Header() {
             <Typography
               onClick={() => history.replace("/")}
               className={classes.title}
-              variant="h5"
+              variant="h4"
               noWrap
+              color="secondary"
             >
               Ondoo.kg
             </Typography>
@@ -289,11 +294,11 @@ export default function Header() {
                   color="inherit"
                 >
                   <AccountCircle
-                    onClick={() => history.replace("/auth/login")}
+                    // onClick={() => history.replace("/auth/login")}
                   />
                 </IconButton>
                 <Typography
-                  // onClick={() => history.replace("/auth/login")}
+                  onClick={() => history.replace("/auth/login")}
                   variant="p"
                   // noWrap
                 >

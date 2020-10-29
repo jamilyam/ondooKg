@@ -42,6 +42,7 @@ export default function ProductPage() {
     const[data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [value, setValue] = useState(0);
 
     const params = useParams();
     const dispatch = useDispatch();
@@ -97,7 +98,7 @@ export default function ProductPage() {
                   <Typography
                     variant="body2"
                     color="textSecondary"
-                    component="p"
+                    component="h6"
                   >
                     Арт.{data.id}
                   </Typography>
@@ -107,15 +108,19 @@ export default function ProductPage() {
                   <Box component="fieldset" mb={3} borderColor="transparent">
                     <Rating
                       name="simple-controlled"
-                      // value={value}
-                      // onChange={(event, newValue) => {
-                      //   setValue(newValue);
-                      // }}
+                      value={data.rating}
+                      onChange={(event, newValue) => {
+                        setValue(newValue);
+                      }}
                     />
                   </Box>
                 </CardContent>
                 {data.salePrice != null && (
-                  <Typography className={classes.oldPrice} color="secondary">
+                  <Typography
+                    variant="h6"
+                    className={classes.oldPrice}
+                    color="secondary"
+                  >
                     {data.price} сом/шт
                   </Typography>
                 )}
@@ -132,7 +137,7 @@ export default function ProductPage() {
                     onClick={handleAddToCart}
                     disabled={data.inventory > 0 ? "" : "disabled"}
                     aria-label="add to card"
-                    color="primary"
+                    color="secondary"
                     variant="contained"
                   >
                     {data.inventory > 0 ? "" : "Нет в наличии"}В корзину
@@ -148,17 +153,6 @@ export default function ProductPage() {
             <ProductDesc item={data} />
           </Grid>
         </Grid>
-        {/* <Grid container>
-          <Grid item xs={12} md={8}>
-            <Typography variant="h2" gutterBottom>
-              Описание
-            </Typography>
-            <Divider />
-            <Typography>
-              {data.description}
-            </Typography>
-          </Grid>
-        </Grid> */}
       </Paper>
     </div>
   );

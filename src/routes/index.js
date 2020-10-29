@@ -1,30 +1,19 @@
 import React, { lazy, Suspense } from "react";
-import { Redirect, Route, BrowserRouter, Switch } from "react-router-dom";
+import { Redirect, Route, Router, Switch } from "react-router-dom";
 import Layout from "../components/layouts/Layout";
 import AdminLayout from "../components/layouts/AdminLayout";
-import ProductList from "../components/ProductList";
 import ProductPage from "../components/ProductPage";
-
-export const getLoggedInUser = () => {
-  const user = JSON.parse(localStorage.getItem("user"));
-  return user;
-};
-
-export const isUserAuth = () => {
-  const user = getLoggedInUser();
-  if (!user) {
-    return false;
-  }
-  return true;
-};
+import {useSelector} from 'react-redux';
+import history from "./history";
 
 const PrivateRoute = (props) => {
+  const auth = useSelector(state => state.firebaseReducer.auth);
   const { children, ...rest } = props;
   return (
     <Route
       {...rest}
       render={(props) => {
-        return isUserAuth() ? (
+        return !auth.isEmpty ? (
           children
         ) : (
           <Redirect
@@ -46,15 +35,19 @@ const Admin = lazy(() => import("./admin"));
 const ShoppingCart = lazy(() => import("./ShoppingCart"));
 const AboutUs = lazy(() => import("./AboutUs"));
 const Catalog = lazy(() => import("./Catalog"));
+const Products = lazy(()=> import("./Products"));
 
 ///?Auth pages
-const Login = lazy(() => import("./auth/Login"));
-const Logout = lazy(() => import("./auth/Logout"));
-const Register = lazy(() => import("./auth/Register"));
+// const Login = lazy(() => import("./auth/Login"));
+// const Logout = lazy(() => import("./auth/Logout"));
+// const Register = lazy(() => import("./auth/Register"));
+
+//firebaseAuth
+const Login = lazy(() => import("./firebaseauth/Login"));
 
 const Routes = () => {
   return (
-    <BrowserRouter>
+    <Router history={history}>
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
           <Route exact path="/">
@@ -71,7 +64,7 @@ const Routes = () => {
 
           <Route exact path="/products">
             <Layout>
-              <ProductList />
+              <Products />
             </Layout>
           </Route>
 
@@ -111,7 +104,7 @@ const Routes = () => {
             </Layout>
           </Route>
 
-          <Route exact path="/auth/register">
+          {/* <Route exact path="/auth/register">
             <Layout>
               <Register />
             </Layout>
@@ -119,7 +112,7 @@ const Routes = () => {
 
           <Route exact path="/auth/logout">
             <Logout />
-          </Route>
+          </Route> */}
 
           <Route>
             <Layout>
@@ -130,7 +123,7 @@ const Routes = () => {
           </Route>
         </Switch>
       </Suspense>
-    </BrowserRouter>
+    </Router>
   );
 };
 export default Routes;

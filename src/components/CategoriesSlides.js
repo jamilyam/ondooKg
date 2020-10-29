@@ -81,7 +81,6 @@ export default class CategoriesSlides extends Component {
       slidesToShow: 4,
       slidesToScroll: 4,
       autoplay: true,
-      speed: 2000,
       autoplaySpeed: 2000,
       cssEase: "linear",
       nextArrow: <SampleNextArrow />,

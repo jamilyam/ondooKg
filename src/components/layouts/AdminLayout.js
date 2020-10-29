@@ -2,7 +2,8 @@ import React, { Suspense } from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Drawer from "@material-ui/core/Drawer";import AppBar from "@material-ui/core/AppBar";
+import Drawer from "@material-ui/core/Drawer";
+import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
 import Typography from "@material-ui/core/Typography";
@@ -15,6 +16,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import  MainListItems  from "../../routes/admin/listItems";
+import { useSelector } from "react-redux";
 
 const drawerWidth = 240;
 
@@ -106,6 +108,11 @@ export default function AdminLayout(props) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const ordersCount = useSelector((state) => {
+    return state.products.orders.length;
+  });
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -133,10 +140,10 @@ export default function AdminLayout(props) {
             noWrap
             className={classes.title}
           >
-            Dashboard
+            Личный кабинет
           </Typography>
           <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
+            <Badge badgeContent={ordersCount} color="secondary">
               <NotificationsIcon />
             </Badge>
           </IconButton>
@@ -155,7 +162,9 @@ export default function AdminLayout(props) {
           </IconButton>
         </div>
         <Divider />
-        <List><MainListItems/></List>
+        <List>
+          <MainListItems />
+        </List>
         <Divider />
       </Drawer>
       <main className={classes.content}>
