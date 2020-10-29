@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "10px",
     display: 'block',
     transitionDuration: "0.3s",
-    height:"30vw",
+    height:"35vw",
   },
   saleIndicator: {
     position: "absolute",
