@@ -36,11 +36,7 @@ const ShoppingCart = lazy(() => import("./ShoppingCart"));
 const AboutUs = lazy(() => import("./AboutUs"));
 const Catalog = lazy(() => import("./Catalog"));
 const Products = lazy(()=> import("./Products"));
-
-///?Auth pages
-// const Login = lazy(() => import("./auth/Login"));
-// const Logout = lazy(() => import("./auth/Logout"));
-// const Register = lazy(() => import("./auth/Register"));
+const Contacts = lazy(() => import("./Contact"));
 
 //firebaseAuth
 const Login = lazy(() => import("./firebaseauth/Login"));
@@ -104,15 +100,15 @@ const Routes = () => {
             </Layout>
           </Route>
 
-          {/* <Route exact path="/auth/register">
+          <Route exact path="/contacts">
             <Layout>
-              <Register />
+              <Contacts />
             </Layout>
           </Route>
 
-          <Route exact path="/auth/logout">
+          {/* <Route exact path="/auth/logout">
             <Logout />
-          </Route> */}
+          </Route>  */}
 
           <Route>
             <Layout>

@@ -31,7 +31,12 @@ export default function Footer() {
           <Typography align={"left"} gutterBottom color={"textPrimary"}>
             Блог
           </Typography>
-          <Typography align={"left"} gutterBottom color={"textPrimary"}>
+          <Typography
+            align={"left"}
+            gutterBottom
+            color={"textPrimary"}
+            onClick={() => history.replace("/contacts")}
+          >
             Контакты
           </Typography>
         </Grid>
@@ -54,13 +59,15 @@ export default function Footer() {
             Клиентская поддержка
           </Typography>
           <Typography align={"left"} gutterBottom color={"textPrimary"}>
-            <InstagramIcon
-              onClick={() => history.replace("https://www.instagram.com/")}
-            />
-            <YouTubeIcon
-              onClick={() => history.replace("https://www.youtube.com/")}
-            />
-            <FacebookIcon onClick={() => history.replace("https://www.facebook.com/")} />
+            <a href="https://www.instagram.com/">
+              <InstagramIcon />
+            </a>
+            <a href="https://www.youtube.com/">
+              <YouTubeIcon />
+            </a>
+            <a href="ttps://www.facebook.com/">
+              <FacebookIcon />
+            </a>
           </Typography>
         </Grid>
       </Grid>

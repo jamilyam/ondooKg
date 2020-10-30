@@ -15,6 +15,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { Button } from "@material-ui/core";
+import PaymentForm from "../PaymentForm";
 
 class Cart extends Component {
   constructor(props) {
@@ -67,7 +68,9 @@ class Cart extends Component {
                 x
               </button>
               <div className="order-details">
-                <h3 className="success-message">Ваш заказ был успешно оформлен.</h3>
+                <h3 className="success-message">
+                  Ваш заказ был успешно оформлен.
+                </h3>
                 <h2>Номер заказа {order.id}</h2>
                 <ul>
                   <li>
@@ -166,6 +169,7 @@ class Cart extends Component {
               </div>
               {this.state.showCheckout && (
                 <Fade right cascade>
+                  <PaymentForm/>
                   <div className="cart">
                     <form onSubmit={this.createOrder}>
                       <ul className="form-container">

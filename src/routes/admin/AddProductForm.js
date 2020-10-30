@@ -132,6 +132,7 @@ class ProductAddForm extends Component {
                       Описание товара
                     </InputLabel>
                     <TextField
+                      fullWidth
                       rowsMax={5}
                       name="description"
                       id="component-simple"
@@ -147,6 +148,7 @@ class ProductAddForm extends Component {
                       Характеристика товара
                     </InputLabel>
                     <TextField
+                      fullWidth
                       rowsMax={5}
                       name="characteristics"
                       id="component-simple"

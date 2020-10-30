@@ -81,18 +81,18 @@ export default function ProductCard({ data }) {
           }}
           alt={data.title}
         />
-        {data.discountInPercent != null && (
+        {data.salePrice != null && (
           <Button
             size="small"
             className={classes.saleIndicator}
             color="primary"
             variant="contained"
           >
-            -{data.discountInPercent}
+            -{parseInt((data.price/data.salePrice-1)*100)}%
           </Button>
         )}
       </CardMedia>
-      <CardContent height="35%">
+      <CardContent height="25%">
         <Typography variant="body2" color="textSecondary" component="p">
           Арт.{data.id}
         </Typography>
